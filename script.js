@@ -70,10 +70,6 @@ drawText(`今月: ${percentages.month}%`, canvas.width / 2, 290, 30);
 drawText(`今週: ${percentages.week}%`, canvas.width / 2, 480, 30);
 drawText(`今日: ${percentages.day}%`, canvas.width / 2, 670, 30);
 
-// 必要なモジュールを読み込む
-const fs = require('fs');
-const path = require('path');
-
 // 画像をファイルとして保存
 const outputPath = path.join(__dirname, 'out'); // 出力ディレクトリのパス
 if (!fs.existsSync(outputPath)) {
