@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '*/1 * * * *' # Run every minute
+    - cron: '*/5 * * * *' # Run every minute
 
 jobs:
   build:
@@ -45,8 +45,15 @@ jobs:
       - name: Run script to generate calendar image
         run: node script.js
 
-      - run: mkdir -p out
-      - uses: actions/upload-artifact@v4
-        with:
-          name: my-artifact
-          path: /home/runner/work/Calendar-ratio/Calendar-ratio/out/ratio.png
+      - uses: actions/checkout@v3
+      - run: |
+          git config user.name  "0x-sinsu"
+          git config user.email "157507447+0x-sinsu@users.noreply.github.com"
+          rm -rf .git
+          git init
+          git clone https://github.com/0x-sinsu/https://github.com/0x-sinsu/Calendar-ratio.git
+          cd Calendar-ratio
+          cp -f /home/runner/work/Calendar-ratio/Calendar-ratio/out/ratio.png /home/runner/work/Calendar-ratio/Calendar-ratio/Calendar-rario
+          git add .
+          git commit -m "generated"
+          git push
