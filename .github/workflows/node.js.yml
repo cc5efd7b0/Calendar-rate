@@ -51,7 +51,7 @@ jobs:
           git config user.email "157507447+0x-sinsu@users.noreply.github.com"
           rm -rf .git
           git init
-          git clone https://github.com/0x-sinsu/https://github.com/0x-sinsu/Calendar-ratio.git
+          git clone https://github.com/0x-sinsu/Calendar-ratio.git
           cd Calendar-ratio
           cp -f /home/runner/work/Calendar-ratio/Calendar-ratio/out/ratio.png /home/runner/work/Calendar-ratio/Calendar-ratio/Calendar-rario
           git add .
