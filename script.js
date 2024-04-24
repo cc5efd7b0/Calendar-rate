@@ -70,7 +70,7 @@ drawText(`今週: ${percentages.week}%`, canvas.width / 2, 480, 30);
 drawText(`今日: ${percentages.day}%`, canvas.width / 2, 670, 30);
 
 // 画像をファイルとして保存
-const out = fs.createWriteStream(__dirname + '/calendar.png');
+const out = fs.createWriteStream('/calendar.png');
 const stream = canvas.createPNGStream();
 stream.pipe(out);
 out.on('finish', () => console.log('The PNG file was created.'));
