@@ -1,0 +1,11 @@
+{
+  "name": "Calendar-ratio",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "start": "node script.js"
+  },
+  "dependencies": {
+    "canvas": "^2.8.0"
+  }
+}
