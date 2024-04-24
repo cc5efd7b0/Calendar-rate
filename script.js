@@ -1,5 +1,6 @@
 const { createCanvas } = require('canvas');
 const fs = require('fs');
+const path = require('path');
 
 // ローカルフォントを読み込む関数
 function loadLocalFont(fontPath, fontFamily) {
@@ -70,7 +71,12 @@ drawText(`今週: ${percentages.week}%`, canvas.width / 2, 480, 30);
 drawText(`今日: ${percentages.day}%`, canvas.width / 2, 670, 30);
 
 // 画像をファイルとして保存
-const out = fs.createWriteStream('/out/ratio.png');
+const outputPath = path.join(__dirname, 'out'); // 出力ディレクトリのパス
+if (!fs.existsSync(outputPath)) {
+  fs.mkdirSync(outputPath); // 出力ディレクトリを作成
+}
+
+const out = fs.createWriteStream(path.join(outputPath, 'ratio.png')); // ratio.pngを出力ディレクトリに保存
 const stream = canvas.createPNGStream();
 stream.pipe(out);
 out.on('finish', () => console.log('The PNG file was created.'));
