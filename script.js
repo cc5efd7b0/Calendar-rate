@@ -70,13 +70,22 @@ drawText(`今月: ${percentages.month}%`, canvas.width / 2, 290, 30);
 drawText(`今週: ${percentages.week}%`, canvas.width / 2, 480, 30);
 drawText(`今日: ${percentages.day}%`, canvas.width / 2, 670, 30);
 
+// 必要なモジュールを読み込む
+const fs = require('fs');
+const path = require('path');
+
 // 画像をファイルとして保存
 const outputPath = path.join(__dirname, 'out'); // 出力ディレクトリのパス
 if (!fs.existsSync(outputPath)) {
   fs.mkdirSync(outputPath); // 出力ディレクトリを作成
 }
 
-const out = fs.createWriteStream(path.join(outputPath, 'ratio.png')); // ratio.pngを出力ディレクトリに保存
+const outPath = path.join(outputPath, 'ratio.png'); // 保存場所のパス
+const out = fs.createWriteStream(outPath); // ratio.pngを出力ディレクトリに保存
 const stream = canvas.createPNGStream();
 stream.pipe(out);
-out.on('finish', () => console.log('The PNG file was created.'));
+out.on('finish', () => {
+  console.log('PNGファイルが作成されました。');
+  console.log('保存場所:', outPath); // 保存場所をコンソールログに表示
+});
+
