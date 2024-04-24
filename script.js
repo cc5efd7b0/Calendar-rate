@@ -17,7 +17,7 @@ const canvas = createCanvas(1080, 720);
 const context = canvas.getContext('2d');
 
 // ローカルフォントのパスとファミリー名
-const fontPath = 'fonts/MPLUSRounded1c-Regular.ttf';
+const fontPath = 'MPLUSRounded1c-Regular.ttf';
 const fontFamily = 'Rounded Mplus 1c';
 
 // ローカルフォントを読み込む
