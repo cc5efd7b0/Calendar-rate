@@ -49,4 +49,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: my-artifact
-          path: out/calendar.png
+          path: /home/runner/work/Calendar-ratio/Calendar-ratio/out/ratio.png
