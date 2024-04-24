@@ -53,7 +53,6 @@ jobs:
           git init
           git clone https://github.com/0x-sinsu/Calendar-ratio.git
           cd Calendar-ratio
-          cp -f /home/runner/work/Calendar-ratio/Calendar-ratio/out/ratio.png ./
           git add .
           git commit -m "generated"
           git push
