@@ -46,10 +46,12 @@ jobs:
         run: |
           git config --global user.email "action@github.com"
           git clone https://github.com/0x-sinsu/Calendar-rate.git
-          node script.js
+          node dark.js
           git config --global user.name  "actions-user"
-          rm -rf ./Calendar-rate/rate.png
-          cp -f rate.png ./Calendar-rate
+          rm -rf ./Calendar-rate/dark.png
+          rm -rf ./Calendar-rate/white.png
+          cp -f dark.png ./Calendar-rate
+          cp -f white.png ./Calendar-rate
           cd Calendar-rate
           git add .
           git commit -m 'generate'
