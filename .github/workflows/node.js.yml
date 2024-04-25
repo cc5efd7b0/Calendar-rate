@@ -52,6 +52,11 @@ jobs:
           git config --global user.name  "actions-user"
           rm -f ./Calendar-rate/dark.png
           rm -f ./Calendar-rate/white.png
+          git add .
+          git commit -m 'del old-generate'
+          git remote rm origin
+          git remote add origin https://0x-sinsu:${{ secrets.GH_ACCESS_TOKEN }}@github.com/0x-sinsu/Calendar-rate.git
+          git push -u origin main
           cp -f dark.png ./Calendar-rate
           cp -f white.png ./Calendar-rate
           cd Calendar-rate
