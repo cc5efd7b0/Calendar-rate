@@ -52,12 +52,12 @@ jobs:
           git config --global user.name  "actions-user"
           rm -f ./Calendar-rate/dark.png
           rm -f ./Calendar-rate/white.png
-          rm -rf Calendar-Rate/.git
-          mv Calendar-Rate subfolder_tmp
-          git submodule deinit Calendar-Rate
-          git rm --cached Calendar-Rate
-          mv subfolder_tmp Calendar-Rate
-          git add Calendar-Rate
+          rm -rf Calendar-rate/.git
+          mv Calendar-rate subfolder_tmp
+          git submodule deinit Calendar-rate
+          git rm --cached Calendar-rate
+          mv subfolder_tmp Calendar-rate
+          git add Calendar-rate
           git add .
           git commit -m 'del old-generate'
           git remote rm origin
@@ -65,12 +65,12 @@ jobs:
           git push -u origin main
           cp -f dark.png ./Calendar-rate
           cp -f white.png ./Calendar-rate
-          rm -rf Calendar-Rate/.git
-          mv Calendar-Rate subfolder_tmp
-          git submodule deinit Calendar-Rate
-          git rm --cached Calendar-Rate
-          mv subfolder_tmp Calendar-Rate
-          git add Calendar-Rate
+          rm -rf Calendar-rate/.git
+          mv Calendar-rate subfolder_tmp
+          git submodule deinit Calendar-rate
+          git rm --cached Calendar-rate
+          mv subfolder_tmp Calendar-rate
+          git add Calendar-rate
           cd Calendar-rate
           git add .
           git commit -m 'generate'
