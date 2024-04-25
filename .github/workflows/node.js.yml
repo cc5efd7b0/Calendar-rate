@@ -43,7 +43,6 @@ jobs:
         run: npm install canvas fs
 
       - name: image generate and commit
-        uses: actions/checkout@v3
         run: |
           node script.js
           git config user.name  "actions-user"
