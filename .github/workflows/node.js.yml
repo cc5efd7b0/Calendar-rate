@@ -41,7 +41,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install canvas fs
+        run: npm install canvas fs dayjs
 
       - name: image generate and commit
         run: |
