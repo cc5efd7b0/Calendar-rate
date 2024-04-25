@@ -18,7 +18,7 @@ const canvas = createCanvas(1080, 720);
 const context = canvas.getContext('2d');
 
 // ローカルフォントのパスとファミリー名
-const fontPath = "./Calendar-rate/MPLUSRounded1c-Regular.ttf";
+const fontPath = "/home/runner/work/Calendar-Rate/Calendar-Rate/Calendar-rate/MPLUSRounded1c-Regular.ttf";
 const fontFamily = "Rounded Mplus 1c";
 
 // ローカルフォントを読み込む
