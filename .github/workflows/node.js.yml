@@ -44,10 +44,10 @@ jobs:
 
       - name: image generate and commit
         run: |
-          node script.js
-          git config --global user.name  "actions-user"
           git config --global user.email "action@github.com"
           git clone https://github.com/0x-sinsu/Calendar-rate.git
+          node script.js
+          git config --global user.name  "actions-user"
           cp -f rate.png ./Calendar-rate
           cd Calendar-rate
           git add .
