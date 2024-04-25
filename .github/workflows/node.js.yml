@@ -42,12 +42,9 @@ jobs:
       - name: Install dependencies
         run: npm install canvas fs
 
-      - name: Run script to generate calendar image
-        run: node script.js
-
-      - uses: actions/checkout@v3
-      - run: |
-          pwd
+      - name: image generate and commit
+        run: |
+          node script.js
           git config user.name  "actions-user"
           git config user.email "65916846+actions-user@users.noreply.github.com"
           git clone https://github.com/0x-sinsu/Calendar-rate.git
