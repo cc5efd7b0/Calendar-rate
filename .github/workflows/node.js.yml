@@ -52,4 +52,6 @@ jobs:
           cd Calendar-rate
           git add .
           git commit -m 'generate'
-          git push
+          git remote rm origin
+          git remote add origin https://0x-sinsu/Calendar-rate/.git
+          git push -u origin main
