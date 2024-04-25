@@ -1,18 +1,10 @@
-const { createCanvas } = require('canvas');
+const { createCanvas, registerFont } = require('canvas');
 const fs = require('fs');
 const path = require('path');
 
-// ローカルフォントを読み込む関数
-function loadLocalFont(fontPath, fontFamily) {
-    try {
-        fs.accessSync(fontPath, fs.constants.R_OK);
-        return fontFamily;
-    } catch (err) {
-        console.error(`Font file "${fontPath}" not found or inaccessible.`);
-        return null;
-    }
-}
-https://fonts.gstatic.com/s/mplusrounded1c/v15/VdGBAYIAV6gnpUpoWwNkYvrugw9RuM1y56sNz-s.woff2
+// フォントを読み込む
+registerFont('fonts/MPLUSRounded1c-Regular.ttf', { family: 'Rounded Mplus 1c' });
+
 // Canvas要素の生成
 const canvas = createCanvas(1080, 720);
 const context = canvas.getContext('2d');
