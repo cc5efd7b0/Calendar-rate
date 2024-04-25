@@ -14,7 +14,7 @@ context.fillStyle = 'black';
 context.fillRect(0, 0, canvas.width, canvas.height);
 
 // 今日の日付を取得
-const today = new Date();
+const today = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' });
 const thisYear = today.getFullYear();
 const thisMonth = today.getMonth() + 1;
 const thisDay = today.getDate();
