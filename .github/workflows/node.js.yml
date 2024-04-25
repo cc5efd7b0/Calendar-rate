@@ -52,7 +52,7 @@ jobs:
           git config --global user.name  "actions-user"
           rm -f ./Calendar-rate/dark.png
           rm -f ./Calendar-rate/white.png
-          rm -rf Calendar-rate/.git
+          rm -rf ./Calendar-rate/.git
           mv Calendar-rate subfolder_tmp
           git submodule deinit Calendar-rate
           git rm --cached Calendar-rate
@@ -65,7 +65,7 @@ jobs:
           git push -u origin main
           cp -f dark.png ./Calendar-rate
           cp -f white.png ./Calendar-rate
-          rm -rf Calendar-rate/.git
+          rm -rf ./Calendar-rate/.git
           mv Calendar-rate subfolder_tmp
           git submodule deinit Calendar-rate
           git rm --cached Calendar-rate
