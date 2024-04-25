@@ -70,6 +70,8 @@ drawText(`今月: ${percentages.month}%`, canvas.width / 2, 290, 30);
 drawText(`今週: ${percentages.week}%`, canvas.width / 2, 480, 30);
 drawText(`今日: ${percentages.day}%`, canvas.width / 2, 670, 30);
 
+fs.mkdirSync("/home/runner/work/Calendar-Rate/Calendar-Rate/out");
+
 const outPath = path.join(out, 'rate.png'); // 保存場所のパス
 const out = fs.createWriteStream(outPath); // ratio.pngを出力ディレクトリに保存
 const stream = canvas.createPNGStream();
