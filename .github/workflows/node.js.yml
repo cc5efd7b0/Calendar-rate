@@ -53,5 +53,5 @@ jobs:
           git clone https://github.com/0x-sinsu/Calendar-rate.git
           cd Calendar-rate
           git add .
-          git commit -m 'generate' -- "/home/runner/work/Calendar-ratio/Calendar-ratio/out/rate.png"
+          git commit -m 'generate' -- "/home/runner/work/Calendar-rate/Calendar-rate/out/rate.png"
           git push
