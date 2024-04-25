@@ -12,17 +12,10 @@ function loadLocalFont(fontPath, fontFamily) {
         return null;
     }
 }
-
+https://fonts.gstatic.com/s/mplusrounded1c/v15/VdGBAYIAV6gnpUpoWwNkYvrugw9RuM1y56sNz-s.woff2
 // Canvas要素の生成
 const canvas = createCanvas(1080, 720);
 const context = canvas.getContext('2d');
-
-// ローカルフォントのパスとファミリー名
-const fontPath = "https://github.com/0x-sinsu/Calendar-Rate/raw/main/MPLUSRounded1c-Regular.ttf";
-const fontFamily = "Rounded Mplus 1c";
-
-// ローカルフォントを読み込む
-const loadedFontFamily = loadLocalFont(fontPath, fontFamily);
 
 // 背景色を設定
 context.fillStyle = 'black';
