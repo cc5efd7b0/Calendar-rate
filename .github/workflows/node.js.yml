@@ -48,6 +48,7 @@ jobs:
           git clone https://github.com/0x-sinsu/Calendar-rate.git
           node script.js
           git config --global user.name  "actions-user"
+          rm -rf ./Calendar-rate/rate.png
           cp -f rate.png ./Calendar-rate
           cd Calendar-rate
           git add .
