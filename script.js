@@ -58,7 +58,7 @@ const percentages = calculatePercentage(thisYear, thisMonth, thisDay);
 
 // テキストを描画する関数（ローカルフォントを使う）
 function drawText(text, x, y, fontFamily) {
-    context.font = `100px 'Rounded Mplus 1c'`; // フォントを設定
+    context.font = "100px 'Rounded Mplus 1c'"; // フォントを設定
     context.fillStyle = 'white';
     context.textAlign = 'center';
     context.fillText(text, x, y); // テキストを描画
