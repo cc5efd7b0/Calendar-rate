@@ -48,8 +48,8 @@ jobs:
           git config user.name  "actions-user"
           git config user.email "65916846+actions-user@users.noreply.github.com"
           git clone https://github.com/0x-sinsu/Calendar-rate.git
+          cp -f rate.png ./Calendar-rate
           cd Calendar-rate
-          cp -f /home/runner/work/Calendar-rate/Calendar-rate/rate.png ./
           git add .
           git commit -m 'generate'
           git push
