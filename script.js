@@ -14,7 +14,7 @@ context.fillStyle = 'black';
 context.fillRect(0, 0, canvas.width, canvas.height);
 
 // 今日の日付を取得
-const today = new new Date("Thu, 06 Sep 2012 00:00:00 +0900");
+const today = new Date("Thu, 06 Sep 2012 00:00:00 +0900");
 const thisYear = today.getFullYear();
 const thisMonth = today.getMonth() + 1;
 const thisDay = today.getDate();
