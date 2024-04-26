@@ -49,7 +49,7 @@ jobs:
         run: |
           git config --global user.email 157507447+0x-sinsu@users.noreply.github.com
           git config --global user.name 0x-sinsu
-          git clone https://github.com/0x-sinsu/Calendar-rate.git
+          git clone https://0x-sinsu:${{ secrets.GH_ACCESS_TOKEN }}@github.com/0x-sinsu/Calendar-rate.git
           node dark.js
           node white.js
           rm -f ./Calendar-rate/dark.png
