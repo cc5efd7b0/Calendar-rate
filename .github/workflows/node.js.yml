@@ -1,6 +1,7 @@
 name: Node.js CI and Calendar Image Generation
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
   pull_request:
@@ -40,18 +41,36 @@ jobs:
           node-version: '21'
 
       - name: Install dependencies
-        run: npm install canvas fs
+        run: npm install canvas fs dayjs
 
       - name: image generate and commit
         run: |
           git config --global user.email "action@github.com"
           git clone https://github.com/0x-sinsu/Calendar-rate.git
           node dark.js
+          node white.js
           git config --global user.name  "actions-user"
-          rm -rf ./Calendar-rate/dark.png
-          rm -rf ./Calendar-rate/white.png
+          rm -f ./Calendar-rate/dark.png
+          rm -f ./Calendar-rate/white.png
+          rm -rf ./Calendar-rate/.git
+          mv Calendar-rate subfolder_tmp
+          git submodule deinit Calendar-rate
+          git rm --cached Calendar-rate
+          mv subfolder_tmp Calendar-rate
+          git add Calendar-rate
+          git add .
+          git commit -m 'del old-generate'
+          git remote rm origin
+          git remote add origin https://0x-sinsu:${{ secrets.GH_ACCESS_TOKEN }}@github.com/0x-sinsu/Calendar-rate.git
+          git push -u origin main
           cp -f dark.png ./Calendar-rate
           cp -f white.png ./Calendar-rate
+          rm -rf ./Calendar-rate/.git
+          mv Calendar-rate subfolder_tmp
+          git submodule deinit Calendar-rate
+          git rm --cached Calendar-rate
+          mv subfolder_tmp Calendar-rate
+          git add Calendar-rate
           cd Calendar-rate
           git add .
           git commit -m 'generate'

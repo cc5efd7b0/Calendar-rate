@@ -1,4 +1,5 @@
 const dayjs = require('dayjs');
+dayjs.locale("ja");
 const { createCanvas, registerFont } = require('canvas');
 const fs = require('fs');
 const path = require('path');
