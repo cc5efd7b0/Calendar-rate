@@ -47,11 +47,9 @@ jobs:
 
       - name: image generate and commit
         run: |
-          git config --global user.email "action@github.com"
           git clone https://github.com/0x-sinsu/Calendar-rate.git
           node dark.js
           node white.js
-          git config --global user.name  "actions-user"
           rm -f ./Calendar-rate/dark.png
           rm -f ./Calendar-rate/white.png
           rm -rf ./Calendar-rate/.git
