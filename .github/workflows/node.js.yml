@@ -55,15 +55,13 @@ jobs:
           rm -f ./Calendar-rate/dark.png
           rm -f ./Calendar-rate/white.png
           rm -rf ./Calendar-rate/.git
-          mv Calendar-rate subfolder_tmp
-          git submodule deinit Calendar-rate
-          git rm --cached Calendar-rate
-          mv subfolder_tmp Calendar-rate
+          cd Calendar-rate
           git add .
           git commit -m 'del old-generate'
           git remote rm origin
           git remote add origin https://0x-sinsu:${{ secrets.GH_ACCESS_TOKEN }}@github.com/0x-sinsu/Calendar-rate.git
           git push -u origin main
+          cd ..
           cp -f dark.png ./Calendar-rate
           cp -f white.png ./Calendar-rate
           rm -rf ./Calendar-rate/.git
