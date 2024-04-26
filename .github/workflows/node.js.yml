@@ -41,7 +41,9 @@ jobs:
           node-version: '21'
 
       - name: Install dependencies
-        run: npm install canvas fs dayjs
+        run: |
+          rm -rf node_modules
+          npm install canvas fs dayjs
 
       - name: image generate and commit
         run: |
