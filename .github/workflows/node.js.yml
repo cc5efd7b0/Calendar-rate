@@ -57,7 +57,7 @@ jobs:
           rm -f white.png
           git add .
           git commit -m 'del old-generate'
-          git push
+          git push ––force
           cd ..
           cp -f dark.png ./Calendar-rate
           cp -f white.png ./Calendar-rate
@@ -70,6 +70,4 @@ jobs:
           cd Calendar-rate
           git add .
           git commit -m 'generate'
-          git remote rm origin
-          git remote add origin https://0x-sinsu:${{ secrets.GH_ACCESS_TOKEN }}@github.com/0x-sinsu/Calendar-rate.git
-          git push -u origin main
+          git push ––force
