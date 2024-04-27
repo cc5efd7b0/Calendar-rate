@@ -57,7 +57,7 @@ jobs:
           rm -f white.png
           git add .
           git commit -m 'del old-generate'
-          git push -u origin main ––force
+          git push -f -u origin main
           cd ..
           cp -f dark.png ./Calendar-rate
           cp -f white.png ./Calendar-rate
@@ -70,4 +70,4 @@ jobs:
           cd Calendar-rate
           git add .
           git commit -m 'generate'
-          git push -u origin main ––force
+          git push -f -u origin main
