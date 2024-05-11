@@ -1,5 +1,19 @@
 const dayjs = require('dayjs');
-dayjs.locale("ja");
+
+import * as dayjs from 'dayjs'
+
+// 最大値・最小値の計算するための拡張プラグイン
+import * as minMax from 'dayjs/plugin/minMax'
+
+// 日本時間に変換する
+import 'dayjs/locale/ja'
+
+// プラグイン拡張
+dayjs.extend(minMax)
+dayjs.locale('ja')
+
+export default dayjs
+
 const { createCanvas, registerFont } = require('canvas');
 const fs = require('fs');
 const path = require('path');
