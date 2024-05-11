@@ -1,5 +1,12 @@
-const dayjs = require('dayjs');
-dayjs.locale("ja");
+const dayjs = require('dayjs')
+const utc = require('dayjs/plugin/utc')
+const timezone = require('dayjs/plugin/timezone')
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+dayjs.tz.setDefault("Asia/Tokyo")
+
 const { createCanvas, registerFont } = require('canvas');
 const fs = require('fs');
 const path = require('path');
@@ -8,7 +15,7 @@ const path = require('path');
 registerFont('fonts/MPLUSRounded1c-Regular.ttf', { family: 'Rounded Mplus 1c' });
 
 // Canvas要素の生成
-const canvas = createCanvas(1080, 720);
+const canvas = createCanvas(720, 600);
 const context = canvas.getContext('2d');
 
 // 背景色を設定
@@ -16,49 +23,52 @@ context.fillStyle = 'white';
 context.fillRect(0, 0, canvas.width, canvas.height);
 
 // 今日の日付を取得
-const today = dayjs();
+const today = dayjs.tz();
 const thisYear = today.year();
-const thisMonth = today.month() + 1;
-const thisDay = today.day();
+const thisMonth = today.month();
 const thisDate = today.date();
 
-// 今年/今月/今週/今日の何%が終わったかを計算する関数
-function calculatePercentage(year, month, day, date) {
-    const totalYear = dayjs(new Date(year, 11, 31)).diff(dayjs(new Date(year, 0, 1)), 'millisecond');
-    const totalMonth = dayjs(new Date(year, month, 0)).date();
+// 今年/今月/今日の何%が終わったかを計算する関数
+function calculatePercentage(year, month, date) {
+    const totalYear = dayjs.tz(new Date(year, 11, 31)).diff(dayjs.tz(new Date(year, 0, 1)), 'millisecond');
+    const totalMonth = dayjs.tz(new Date(year, month, 0)).date();
     const totalDay = 7;
     
-    const percentageYear = ((today - dayjs(new Date(year, 0, 1))) / totalYear) * 100;
-    const percentageMonth = ((today.date() - 1) / totalMonth) * 100;
-    const percentageWeek = (day / totalDay) * 100;
+    const percentageYear = ((today - dayjs.tz(new Date(year, 0, 1))) / totalYear) * 100;
+    const percentageMonth = ((today.date()) / (today.daysInMonth())) * 100;
     const percentageDate = ((today.hour() * 3600 + today.minute() * 60 + today.second()) / 86400) * 100;
 
     return {
         year: percentageYear.toFixed(1),
         month: percentageMonth.toFixed(1),
-        week: percentageWeek.toFixed(1),
         date: percentageDate.toFixed(1)
     };
 }
 
-// 今日の経過率を取得
-const percentages = calculatePercentage(thisYear, thisMonth, thisDay, thisDate);
+// 経過率を取得
+const percentages = calculatePercentage(thisYear, thisMonth, thisDate);
 
 // テキストを描画する関数（ローカルフォントを使う）
 function drawText(text, x, y, fontFamily) {
-    context.font = "100px 'Rounded Mplus 1c'"; // フォントを設定
+    const fontSize = 100; // フォントサイズを100pxに設定
+    context.font = `${fontSize}px 'Rounded Mplus 1c'`; // フォントを設定
     context.fillStyle = 'black';
     context.textAlign = 'center';
+    context.textBaseline = 'middle'; // テキストのベースラインを中央に設定
     context.fillText(text, x, y); // テキストを描画
 }
 
-// テキストを描画
-drawText(`今年: ${percentages.year}%`, canvas.width / 2, 100, 30);
-drawText(`今月: ${percentages.month}%`, canvas.width / 2, 290, 30);
-drawText(`今週: ${percentages.week}%`, canvas.width / 2, 480, 30);
-drawText(`今日: ${percentages.date}%`, canvas.width / 2, 670, 30);
+// 各行の高さ
+const lineHeight = 100;
 
-const outPath = path.join('images/white.png'); // 保存場所のパス
+// テキストを描画
+const centerY = canvas.height / 2;
+const textMargin = 200; // テキスト間のマージン
+
+drawText(`今年: ${percentages.year}%`, canvas.width / 2, centerY - textMargin);
+drawText(`今月: ${percentages.month}%`, canvas.width / 2, centerY);
+drawText(`今日: ${percentages.date}%`, canvas.width / 2, centerY + textMargin);
+const outPath = path.join('images/dark.png'); // 保存場所のパス
 const out = fs.createWriteStream(outPath); // ratio.pngを出力ディレクトリに保存
 const stream = canvas.createPNGStream();
 stream.pipe(out);
