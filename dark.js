@@ -15,7 +15,7 @@ const path = require('path');
 registerFont('fonts/MPLUSRounded1c-Regular.ttf', { family: 'Rounded Mplus 1c' });
 
 // Canvas要素の生成
-const canvas = createCanvas(720, 490);
+const canvas = createCanvas(600, 490);
 const context = canvas.getContext('2d');
 
 // 背景色を設定
