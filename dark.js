@@ -56,10 +56,20 @@ function drawText(text, x, y, fontFamily) {
     context.fillText(text, x, y); // テキストを描画
 }
 
+// テキストのフォントサイズ
+const fontSize = 30;
+
+// テキストの高さ
+const textHeight = fontSize;
+
+// 各テキストの間隔
+const lineHeight = 100;
+
 // テキストを描画
-drawText(`今年: ${percentages.year}%`, canvas.width / 2, 100);
-drawText(`今月: ${percentages.month}%`, canvas.width / 2, 300);
-drawText(`今日: ${percentages.date}%`, canvas.width / 2, 500);
+drawText(`今年: ${percentages.year}%`, canvas.width / 2, 100 - textHeight / 2);
+drawText(`今月: ${percentages.month}%`, canvas.width / 2, 100 + lineHeight - textHeight / 2);
+drawText(`今日: ${percentages.date}%`, canvas.width / 2, 100 + 2 * lineHeight - textHeight / 2);
+
 
 const outPath = path.join('images/dark.png'); // 保存場所のパス
 const out = fs.createWriteStream(outPath); // ratio.pngを出力ディレクトリに保存
