@@ -58,7 +58,7 @@ function drawText(text, x, y, fontFamily) {
 }
 
 // 各行の高さ
-const lineHeight = 200; // 各行の高さを100pxに設定
+const lineHeight = 100;
 
 // テキストを描画
 drawText(`今年: ${percentages.year}%`, canvas.width / 2, lineHeight);
