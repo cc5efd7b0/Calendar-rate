@@ -35,7 +35,7 @@ function calculatePercentage(year, month, date) {
     const totalDay = 7;
     
     const percentageYear = ((today - dayjs.tz(new Date(year, 0, 1))) / totalYear) * 100;
-    const percentageMonth = ((today.date()) / totalMonth) * 100;
+    const percentageMonth = ((today.date()) / (today.Month())) * 100;
     const percentageDate = ((today.hour() * 3600 + today.minute() * 60 + today.second()) / 86400) * 100;
 
     return {
