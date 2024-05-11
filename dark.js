@@ -50,7 +50,7 @@ const percentages = calculatePercentage(thisYear, thisMonth, thisDate);
 
 // テキストを描画する関数（ローカルフォントを使う）
 function drawText(text, x, y, fontFamily) {
-    const fontSize = 30; // フォントサイズを定義
+    const fontSize = 100; // フォントサイズを100pxに設定
     context.font = `${fontSize}px 'Rounded Mplus 1c'`; // フォントを設定
     context.fillStyle = 'white';
     context.textAlign = 'center';
@@ -58,7 +58,7 @@ function drawText(text, x, y, fontFamily) {
 }
 
 // 各行の高さ
-const lineHeight = 100;
+const lineHeight = 200; // 各行の高さを100pxに設定
 
 // テキストを描画
 drawText(`今年: ${percentages.year}%`, canvas.width / 2, lineHeight);
