@@ -49,26 +49,13 @@ jobs:
 
       - name: image generate and commit
         run: |
-          git lfs install
-          git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          set -x
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           node dark.js
           node white.js
-          rm -f dark.png
-          rm -f white.png
-          git add .
-          git commit -m 'del old-generate'
-          git push -f -u origin main
-          cd ..
-          cp -f dark.png ./Calendar-rate
-          cp -f white.png ./Calendar-rate
-          rm -rf ./Calendar-rate/.git
-          mv Calendar-rate subfolder_tmp
-          git submodule deinit Calendar-rate
-          git rm --cached Calendar-rate
-          mv subfolder_tmp Calendar-rate
-          git add Calendar-rate
           cd Calendar-rate
           git add .
           git commit -m 'generate'
-          git push -f -u origin main
+          git push
+          if: steps.diff.outcome == 'failure'
