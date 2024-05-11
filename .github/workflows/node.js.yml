@@ -54,7 +54,7 @@ jobs:
           git config user.email github-actions@github.com
           node dark.js
           node white.js
-          git add .
+          git add images
           git commit -m 'generate'
           git push
           if: steps.diff.outcome == 'failure'
