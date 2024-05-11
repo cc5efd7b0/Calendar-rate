@@ -54,17 +54,20 @@ function drawText(text, x, y, fontFamily) {
     context.font = `${fontSize}px 'Rounded Mplus 1c'`; // フォントを設定
     context.fillStyle = 'white';
     context.textAlign = 'center';
-    context.fillText(text, x, y + fontSize / 2); // テキストを描画
+    context.textBaseline = 'middle'; // テキストのベースラインを中央に設定
+    context.fillText(text, x, y); // テキストを描画
 }
 
 // 各行の高さ
 const lineHeight = 100;
 
 // テキストを描画
-drawText(`今年: ${percentages.year}%`, canvas.width / 2, lineHeight);
-drawText(`今月: ${percentages.month}%`, canvas.width / 2, lineHeight * 2);
-drawText(`今日: ${percentages.date}%`, canvas.width / 2, lineHeight * 3);
+const centerY = canvas.height / 2;
+const textMargin = 200; // テキスト間のマージン
 
+drawText(`今年: ${percentages.year}%`, canvas.width / 2, centerY - textMargin);
+drawText(`今月: ${percentages.month}%`, canvas.width / 2, centerY);
+drawText(`今日: ${percentages.date}%`, canvas.width / 2, centerY + textMargin);
 const outPath = path.join('images/dark.png'); // 保存場所のパス
 const out = fs.createWriteStream(outPath); // ratio.pngを出力ディレクトリに保存
 const stream = canvas.createPNGStream();
