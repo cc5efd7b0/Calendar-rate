@@ -8,7 +8,7 @@ const path = require('path');
 registerFont('fonts/MPLUSRounded1c-Regular.ttf', { family: 'Rounded Mplus 1c' });
 
 // Canvas要素の生成
-const canvas = createCanvas(1080, 720);
+const canvas = createCanvas(720, 400);
 const context = canvas.getContext('2d');
 
 // 背景色を設定
@@ -41,7 +41,7 @@ function calculatePercentage(year, month, day, date) {
     };
 }
 
-// 今日の経過率を取得
+// 経過率を取得
 const percentages = calculatePercentage(thisYear, thisMonth, thisDay, thisDate);
 
 // テキストを描画する関数（ローカルフォントを使う）
@@ -54,9 +54,8 @@ function drawText(text, x, y, fontFamily) {
 
 // テキストを描画
 drawText(`今年: ${percentages.year}%`, canvas.width / 2, 100, 30);
-drawText(`今月: ${percentages.month}%`, canvas.width / 2, 290, 30);
-drawText(`今週: ${percentages.week}%`, canvas.width / 2, 480, 30);
-drawText(`今日: ${percentages.date}%`, canvas.width / 2, 670, 30);
+drawText(`今月: ${percentages.month}%`, canvas.width / 2, 180, 30);
+drawText(`今日: ${percentages.date}%`, canvas.width / 2, 270, 30);
 
 const outPath = path.join('images/dark.png'); // 保存場所のパス
 const out = fs.createWriteStream(outPath); // ratio.pngを出力ディレクトリに保存
