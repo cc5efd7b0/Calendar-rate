@@ -1,7 +1,7 @@
 const dayjs = require('dayjs');
 
-import dayjs from 'dayjs';
-import 'dayjs/locale/ja';
+const dayjs = require('dayjs');
+require('dayjs/locale/ja');
 
 dayjs.locale('ja');
 
