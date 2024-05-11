@@ -57,4 +57,3 @@ jobs:
           git add images
           git commit -m 'generate'
           git push
-          if: steps.diff.outcome == 'failure'
