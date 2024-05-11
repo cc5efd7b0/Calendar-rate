@@ -68,7 +68,7 @@ const textMargin = 200; // テキスト間のマージン
 drawText(`今年: ${percentages.year}%`, canvas.width / 2, centerY - textMargin);
 drawText(`今月: ${percentages.month}%`, canvas.width / 2, centerY);
 drawText(`今日: ${percentages.date}%`, canvas.width / 2, centerY + textMargin);
-const outPath = path.join('images/dark.png'); // 保存場所のパス
+const outPath = path.join('images/white.png'); // 保存場所のパス
 const out = fs.createWriteStream(outPath); // ratio.pngを出力ディレクトリに保存
 const stream = canvas.createPNGStream();
 stream.pipe(out);
