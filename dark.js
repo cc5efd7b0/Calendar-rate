@@ -23,7 +23,7 @@ context.fillStyle = 'black';
 context.fillRect(0, 0, canvas.width, canvas.height);
 
 // 今日の日付を取得
-const today = dayjs();
+const today = dayjs.tz();
 const thisYear = today.year();
 const thisMonth = today.month() + 1;
 const thisDay = today.day();
@@ -31,11 +31,11 @@ const thisDate = today.date();
 
 // 今年/今月/今週/今日の何%が終わったかを計算する関数
 function calculatePercentage(year, month, day, date) {
-    const totalYear = dayjs(new Date(year, 11, 31)).diff(dayjs(new Date(year, 0, 1)), 'millisecond');
-    const totalMonth = dayjs(new Date(year, month, 0)).date();
+    const totalYear = dayjs.tz(new Date(year, 11, 31)).diff(dayjs.tz(new Date(year, 0, 1)), 'millisecond');
+    const totalMonth = dayjs.tz(new Date(year, month, 0)).date();
     const totalDay = 7;
     
-    const percentageYear = ((today - dayjs(new Date(year, 0, 1))) / totalYear) * 100;
+    const percentageYear = ((today - dayjs.tz(new Date(year, 0, 1))) / totalYear) * 100;
     const percentageMonth = ((today.date() - 1) / totalMonth) * 100;
     const percentageWeek = (day / totalDay) * 100;
     const percentageDate = ((today.hour() * 3600 + today.minute() * 60 + today.second()) / 86400) * 100;
