@@ -45,7 +45,7 @@ jobs:
       - name: Install dependencies
         run: |
           rm -rf node_modules
-          npm install canvas fs dayjs @dayjs/plugin-timezone
+          npm install canvas fs dayjs
 
       - name: image generate and commit
         run: |
