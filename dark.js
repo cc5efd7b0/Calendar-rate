@@ -25,7 +25,7 @@ context.fillRect(0, 0, canvas.width, canvas.height);
 // 今日の日付を取得
 const today = dayjs.tz();
 const thisYear = today.year();
-const thisMonth = today.month() + 1;
+const thisMonth = today.month();
 const thisDay = today.day();
 const thisDate = today.date();
 
