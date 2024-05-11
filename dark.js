@@ -1,19 +1,11 @@
-const dayjs = require('dayjs');
-const timezone = require('@dayjs/plugin/timezone');
-const utc = require('@dayjs/plugin/utc');
-dayjs.extend(utc);
-dayjs.extend(timezone);
+const dayjs = require('dayjs')
+const utc = require('dayjs/plugin/jst')
+const timezone = require('dayjs/plugin/timezone')
 
-// 日本語のロケールを設定
-require('dayjs/locale/ja');
-dayjs.locale('ja');
+dayjs.extend(jst)
+dayjs.extend(timezone)
 
-// 東京のタイムゾーンを使用
-const today = dayjs().tz('Asia/Tokyo');
-const thisYear = today.year();
-const thisMonth = today.month() + 1; // 月は0から始まるので、1を加える
-const thisDay = today.day();
-const thisDate = today.date();
+dayjs.tz.setDefault("Asia/Tokyo")
 
 const { createCanvas, registerFont } = require('canvas');
 const fs = require('fs');
