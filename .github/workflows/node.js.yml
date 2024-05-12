@@ -1,4 +1,4 @@
-name: Node.js CI and Calendar Image Generation
+name: Image Generate
 
 on:
   workflow_dispatch:
@@ -40,20 +40,21 @@ jobs:
         with:
           node-version: '21'
 
-      
-
       - name: Install dependencies
         run: |
           rm -rf node_modules
           npm install canvas fs dayjs timezone
 
-      - name: image generate and commit
+      - name: Generate
+        run: |
+          node dark.js
+          node white.js
+      
+      - name: Commit
         run: |
           set -x
           git config user.name github-actions
           git config user.email github-actions@github.com
-          node dark.js
-          node white.js
           git add images
           git commit -m 'generate'
           git push
