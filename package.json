@@ -6,6 +6,9 @@
     "start": "node script.js"
   },
   "dependencies": {
-    "canvas": "^2.8.0"
+    "canvas": "^2.11.2",
+    "dayjs": "^1.11.11",
+    "fs": "^0.0.1-security",
+    "timezone": "^1.0.23"
   }
 }
