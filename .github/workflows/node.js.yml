@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: '* * * * *' # 毎分実行、とはなっていますがActionsでは最短でも5分毎です
+    - cron: '*/10 * * * *'
 
 jobs:
   build:
