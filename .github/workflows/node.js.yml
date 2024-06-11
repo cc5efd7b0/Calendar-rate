@@ -47,8 +47,7 @@ jobs:
 
       - name: Generate
         run: |
-          node dark.js
-          node white.js
+          node black.js
       
       - name: Commit
         run: |
