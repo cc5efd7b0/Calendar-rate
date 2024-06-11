@@ -29,14 +29,21 @@ const thisMonth = today.month();
 const thisDate = today.date();
 
 // 今年/今月/今日の何%が終わったかを計算する関数
-function calculatePercentage(year, month, date) {
-    const totalYear = dayjs.tz(new Date(year, 11, 31)).diff(dayjs.tz(new Date(year, 0, 1)), 'millisecond');
-    const totalMonth = dayjs.tz(new Date(year, month, 0)).date();
-    const totalDay = 7;
-    
-    const percentageYear = ((today - dayjs.tz(new Date(year, 0, 1))) / totalYear) * 100;
-    const percentageMonth = ((today.date()) / (today.daysInMonth())) * 100;
-    const percentageDate = ((today.hour() * 3600 + today.minute() * 60 + today.second()) / 86400) * 100;
+function calculatePercentage(today) {
+    const startOfYear = dayjs.tz(new Date(thisYear, 0, 1));
+    const endOfYear = dayjs.tz(new Date(thisYear, 11, 31));
+    const totalYear = endOfYear.diff(startOfYear, 'millisecond');
+    const elapsedYear = today.diff(startOfYear, 'millisecond');
+    const percentageYear = (elapsedYear / totalYear) * 100;
+
+    const startOfMonth = today.startOf('month');
+    const endOfMonth = today.endOf('month');
+    const totalMonthHours = endOfMonth.diff(startOfMonth, 'hour');
+    const elapsedMonthHours = today.diff(startOfMonth, 'hour');
+    const percentageMonth = (elapsedMonthHours / totalMonthHours) * 100;
+
+    const secondsInDay = today.hour() * 3600 + today.minute() * 60 + today.second();
+    const percentageDate = (secondsInDay / 86400) * 100;
 
     return {
         year: percentageYear.toFixed(1),
