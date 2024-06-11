@@ -42,14 +42,10 @@ function calculatePercentage(today) {
     const secondsInDay = today.hour() * 3600 + today.minute() * 60 + today.second();
     const percentageDate = (secondsInDay / 86400) * 100;
 
-    console.log(`Year: ${percentageYear.toFixed(1)}%`);
-    console.log(`Month: ${percentageMonth.toFixed(1)}%`);
-    console.log(`Day: ${percentageDate.toFixed(1)}%`);
-
     return {
-        year: percentageYear.toFixed(1),
-        month: percentageMonth.toFixed(1),
-        date: percentageDate.toFixed(1)
+        percentageYear: percentageYear.toFixed(1),
+        percentageMonth: percentageMonth.toFixed(1),
+        percentageDate: percentageDate.toFixed(1)
     };
 }
 
@@ -70,9 +66,9 @@ function drawText(text, x, y) {
 const centerY = canvas.height / 2;
 const textMargin = 200; // テキスト間のマージン
 
-drawText(`今年: ${percentages.year}%`, canvas.width / 2, centerY - textMargin);
-drawText(`今月: ${percentages.month}%`, canvas.width / 2, centerY);
-drawText(`今日: ${percentages.date}%`, canvas.width / 2, centerY + textMargin);
+drawText(`今年: ${percentages.percentageYear}%`, canvas.width / 2, centerY - textMargin);
+drawText(`今月: ${percentages.percentageMonth}%`, canvas.width / 2, centerY);
+drawText(`今日: ${percentages.percentageDate}%`, canvas.width / 2, centerY + textMargin);
 
 // 画像を保存する
 const outPath = path.join('images/black.png');
