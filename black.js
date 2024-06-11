@@ -23,12 +23,10 @@ context.fillRect(0, 0, canvas.width, canvas.height);
 
 // 今日の日付を取得
 const today = dayjs.tz();
-const thisYear = today.year();
-const thisMonth = today.month();
-const thisDate = today.date();
 
 // 今年/今月/今日の何%が終わったかを計算する関数
 function calculatePercentage(today) {
+    const thisYear = today.year();
     const startOfYear = dayjs.tz(new Date(thisYear, 0, 1));
     const endOfYear = dayjs.tz(new Date(thisYear, 11, 31));
     const totalYear = endOfYear.diff(startOfYear, 'millisecond');
@@ -55,6 +53,9 @@ function calculatePercentage(today) {
     };
 }
 
+// 経過率を取得
+const percentages = calculatePercentage(today);
+
 // テキストを描画する関数（ローカルフォントを使う）
 function drawText(text, x, y) {
     const fontSize = 100; // フォントサイズを100pxに設定
@@ -69,9 +70,9 @@ function drawText(text, x, y) {
 const centerY = canvas.height / 2;
 const textMargin = 200; // テキスト間のマージン
 
-drawText(`今年: ${percentageYear.toFixed(1)}%`, canvas.width / 2, centerY - textMargin);
-drawText(`今月: ${percentageMonth.toFixed(1)}%`, canvas.width / 2, centerY);
-drawText(`今日: ${percentageDate.toFixed(1)}%`, canvas.width / 2, centerY + textMargin);
+drawText(`今年: ${percentages.year}%`, canvas.width / 2, centerY - textMargin);
+drawText(`今月: ${percentages.month}%`, canvas.width / 2, centerY);
+drawText(`今日: ${percentages.date}%`, canvas.width / 2, centerY + textMargin);
 
 // 画像を保存する
 const outPath = path.join('images/black.png');
