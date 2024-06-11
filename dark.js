@@ -1,15 +1,14 @@
-const dayjs = require('dayjs')
-const utc = require('dayjs/plugin/utc')
-const timezone = require('dayjs/plugin/timezone')
-
-dayjs.extend(utc)
-dayjs.extend(timezone)
-
-dayjs.tz.setDefault("Asia/Tokyo")
-
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
 const { createCanvas, registerFont } = require('canvas');
 const fs = require('fs');
 const path = require('path');
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+dayjs.tz.setDefault('Asia/Tokyo');
 
 // フォントを読み込む
 registerFont('fonts/MPLUSRounded1c-Regular.ttf', { family: 'Rounded Mplus 1c' });
@@ -36,10 +35,12 @@ function calculatePercentage(today) {
     const elapsedYear = today.diff(startOfYear, 'millisecond');
     const percentageYear = (elapsedYear / totalYear) * 100;
 
+
     const startOfMonth = today.startOf('month');
     const endOfMonth = today.endOf('month');
     const totalMonthHours = endOfMonth.diff(startOfMonth, 'hour');
     const elapsedMonthHours = today.diff(startOfMonth, 'hour');
+
     const percentageMonth = (elapsedMonthHours / totalMonthHours) * 100;
 
     const secondsInDay = today.hour() * 3600 + today.minute() * 60 + today.second();
@@ -53,10 +54,10 @@ function calculatePercentage(today) {
 }
 
 // 経過率を取得
-const percentages = calculatePercentage(thisYear, thisMonth, thisDate);
+const percentages = calculatePercentage(today);
 
 // テキストを描画する関数（ローカルフォントを使う）
-function drawText(text, x, y, fontFamily) {
+function drawText(text, x, y) {
     const fontSize = 100; // フォントサイズを100pxに設定
     context.font = `${fontSize}px 'Rounded Mplus 1c'`; // フォントを設定
     context.fillStyle = 'white';
@@ -65,9 +66,6 @@ function drawText(text, x, y, fontFamily) {
     context.fillText(text, x, y); // テキストを描画
 }
 
-// 各行の高さ
-const lineHeight = 100;
-
 // テキストを描画
 const centerY = canvas.height / 2;
 const textMargin = 200; // テキスト間のマージン
@@ -75,11 +73,13 @@ const textMargin = 200; // テキスト間のマージン
 drawText(`今年: ${percentages.year}%`, canvas.width / 2, centerY - textMargin);
 drawText(`今月: ${percentages.month}%`, canvas.width / 2, centerY);
 drawText(`今日: ${percentages.date}%`, canvas.width / 2, centerY + textMargin);
-const outPath = path.join('images/dark.png'); // 保存場所のパス
-const out = fs.createWriteStream(outPath); // ratio.pngを出力ディレクトリに保存
+
+// 画像を保存する
+const outPath = path.join('images/dark.png');
+const out = fs.createWriteStream(outPath);
 const stream = canvas.createPNGStream();
 stream.pipe(out);
 out.on('finish', () => {
   console.log('PNGファイルが作成されました。');
-  console.log('保存場所:', outPath); // 保存場所をコンソールログに表示
+  console.log('保存場所:', outPath);
 });
