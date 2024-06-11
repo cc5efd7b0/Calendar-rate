@@ -29,33 +29,26 @@ const thisMonth = today.month();
 const thisDate = today.date();
 
 // 今年/今月/今日の何%が終わったかを計算する関数
-function calculatePercentage(year, month, date) {
-    const totalYear = dayjs.tz(new Date(year, 11, 31)).diff(dayjs.tz(new Date(year, 0, 1)), 'millisecond');
-    const totalMonth = dayjs.tz(new Date(year, month, 0)).date();
-    const totalDay = 7;
-    
-    const percentageYear = ((today - dayjs.tz(new Date(year, 0, 1))) / totalYear) * 100;
-    const percentageMonth = ((today.date()) / (today.daysInMonth())) * 100;
-    const percentageDate = ((today.hour() * 3600 + today.minute() * 60 + today.second()) / 86400) * 100;
+function calculatePercentage(today) {
+    const startOfYear = dayjs.tz(new Date(thisYear, 0, 1));
+    const endOfYear = dayjs.tz(new Date(thisYear, 11, 31));
+    const totalYear = endOfYear.diff(startOfYear, 'millisecond');
+    const elapsedYear = today.diff(startOfYear, 'millisecond');
+    const percentageYear = (elapsedYear / totalYear) * 100;
+
+    const daysInMonth = today.daysInMonth();
+    const totalMonthHours = daysInMonth * 24;
+    const elapsedMonthHours = today.date() * 24 + today.hour();
+    const percentageMonth = (elapsedMonthHours / totalMonthHours) * 100;
+
+    const secondsInDay = today.hour() * 3600 + today.minute() * 60 + today.second();
+    const percentageDate = (secondsInDay / 86400) * 100;
 
     return {
         year: percentageYear.toFixed(1),
         month: percentageMonth.toFixed(1),
         date: percentageDate.toFixed(1)
     };
-}
-
-// 経過率を取得
-const percentages = calculatePercentage(thisYear, thisMonth, thisDate);
-
-// テキストを描画する関数（ローカルフォントを使う）
-function drawText(text, x, y, fontFamily) {
-    const fontSize = 100; // フォントサイズを100pxに設定
-    context.font = `${fontSize}px 'Rounded Mplus 1c'`; // フォントを設定
-    context.fillStyle = 'white';
-    context.textAlign = 'center';
-    context.textBaseline = 'middle'; // テキストのベースラインを中央に設定
-    context.fillText(text, x, y); // テキストを描画
 }
 
 // 各行の高さ
