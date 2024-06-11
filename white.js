@@ -72,7 +72,7 @@ drawText(`今月: ${percentages.month}%`, canvas.width / 2, centerY);
 drawText(`今日: ${percentages.date}%`, canvas.width / 2, centerY + textMargin);
 
 // 画像を保存する
-const outPath = path.join('images/dark.png');
+const outPath = path.join('images/white.png');
 const out = fs.createWriteStream(outPath);
 const stream = canvas.createPNGStream();
 stream.pipe(out);
