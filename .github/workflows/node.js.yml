@@ -54,6 +54,7 @@ jobs:
           set -x
           git config user.name github-actions
           git config user.email github-actions@github.com
+          git add .
           git add images
           git commit -m 'generate'
           git push
