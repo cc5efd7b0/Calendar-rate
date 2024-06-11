@@ -35,16 +35,18 @@ function calculatePercentage(today) {
     const elapsedYear = today.diff(startOfYear, 'millisecond');
     const percentageYear = (elapsedYear / totalYear) * 100;
 
-
     const startOfMonth = today.startOf('month');
     const endOfMonth = today.endOf('month');
     const totalMonthHours = endOfMonth.diff(startOfMonth, 'hour');
     const elapsedMonthHours = today.diff(startOfMonth, 'hour');
-
     const percentageMonth = (elapsedMonthHours / totalMonthHours) * 100;
 
     const secondsInDay = today.hour() * 3600 + today.minute() * 60 + today.second();
     const percentageDate = (secondsInDay / 86400) * 100;
+
+    console.log(`Year: ${percentageYear.toFixed(1)}%`);
+    console.log(`Month: ${percentageMonth.toFixed(1)}%`);
+    console.log(`Day: ${percentageDate.toFixed(1)}%`);
 
     return {
         year: percentageYear.toFixed(1),
