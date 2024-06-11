@@ -57,4 +57,4 @@ jobs:
           git add .
           git add images
           git commit -m 'generate'
-          git push　-f
+          git push -f
