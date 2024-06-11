@@ -55,9 +55,6 @@ function calculatePercentage(today) {
     };
 }
 
-// 経過率を取得
-const percentages = calculatePercentage(today);
-
 // テキストを描画する関数（ローカルフォントを使う）
 function drawText(text, x, y) {
     const fontSize = 100; // フォントサイズを100pxに設定
@@ -72,9 +69,9 @@ function drawText(text, x, y) {
 const centerY = canvas.height / 2;
 const textMargin = 200; // テキスト間のマージン
 
-drawText(`今年: ${percentages.year}%`, canvas.width / 2, centerY - textMargin);
-drawText(`今月: ${percentages.month}%`, canvas.width / 2, centerY);
-drawText(`今日: ${percentages.date}%`, canvas.width / 2, centerY + textMargin);
+drawText(`今年: ${percentageYear.toFixed(1)}%`, canvas.width / 2, centerY - textMargin);
+drawText(`今月: ${percentageMonth.toFixed(1)}%`, canvas.width / 2, centerY);
+drawText(`今日: ${percentageDate.toFixed(1)}%`, canvas.width / 2, centerY + textMargin);
 
 // 画像を保存する
 const outPath = path.join('images/black.png');
