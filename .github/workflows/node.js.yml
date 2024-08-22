@@ -43,7 +43,7 @@ jobs:
       - name: Install dependencies
         run: |
           rm -rf node_modules
-          npm install canvas fs dayjs timezone
+          npm install canvas dayjs
 
       - name: Generate
         run: |
