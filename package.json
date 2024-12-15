@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "canvas": "^2.11.2",
+    "canvas": "^3.0.0-rc3",
     "dayjs": "^1.11.13",
     "fs": "^0.0.1-security",
     "timezone": "^1.0.23"
